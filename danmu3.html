@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="danMu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <!-- <link rel="stylesheet" href="css/app.css"> -->
+  <!-- // <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+  <!-- // <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+  <script src="js/angular.js"></script>
+  <!-- // <script src="js/danmu.js"></script> -->
+</head>
+<body>
+  <div dan-mu-box class="odanmu odanmu3" ng-controller="OdanMu"></div>
+
+  <style>
+
+  /* danmu */
+  .odanmu{
+    display: inline-block;
+    position: fixed;
+    top: 10%;
+    right: 15px;
+    width: 71%;
+    overflow: hidden;
+    z-index: 9999;
+
+    min-height: 120px;
+  }
+  .odanmu-list{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    position: relative;
+    height: 120px;
+
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  .odanmu-item{
+    margin-bottom: 8px;
+
+    position: absolute;
+    right: 0;
+    width: 100%;
+
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  .odanmu-body{
+    display: inline-block;
+    min-height: 20px;
+    background-color: rgba(0,0,0,0.4);
+    vertical-align: middle;
+    border-radius: 13px;
+    max-width: 100%;
+  }
+  .odanmu-avatar-left{
+    float: left;
+  }
+  .odanmu-content{
+    margin-left: 20px;
+    margin-bottom: 0;
+    font-size: 12px;
+    padding: 3px 8px 3px 5px;
+    line-height: 16px;
+    color: #f8f8f8;
+    text-align: left;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .round-avatar{
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .round-avatar img{
+    max-width: 100%;
+    border-radius: 50%;
+  }
+  .round-avatar.sm-avatar,
+  .round-avatar.sm-avatar img{
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ------------ */
+  .odanmu3 .odanmu-content{
+    overflow: visible;
+    white-space: normal;
+    text-overflow: normal;
+  }
+  .odanmu3 .odanmu-item{
+    position: static;
+    -webkit-animation-name: none;
+            animation-name: none;
+  }
+  .odanmu3 .odanmu-list{
+    height: auto;
+    -webkit-animation-name: bounceInUp2;
+            animation-name: bounceInUp2;
+    -webkit-animation-duration: 4s;
+            animation-duration: 4s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+  }
+  .odanmu3.odanmu3 .odanmu-list{
+    min-height: 120px;
+    -webkit-animation-name: normal;
+            animation-name: normal;
+  }
+  .odanmu3.odanmu3 .odanmu-item{
+    -webkit-animation-name: bounceInUp3;
+            animation-name: bounceInUp3;
+    /*-webkit-animation-delay: 1s;*/
+            /*animation-delay: 1s;*/
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+  }
+
+  @-webkit-keyframes bounceInUp3 {
+    0%, 60%, 75%, 90%, 100% {
+      -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(120px);
+      transform: translateY(120px);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0px);
+      transform: translateY(0px);
+    }
+  }
+  /*@-webkit-keyframes fadeOut {
+
+    0% {
+      height: auto;
+      margin-bottom: 0;
+      opacity: 1;
+    }
+
+    100% {
+      height: 0;
+      margin-bottom: 0;
+      opacity: 0;
+      -webkit-transform: scaleY(0);
+      -webkit-transform-origin: center top;
+    }
+  }*/
+ /* .odanmu3.odanmu3 .odanmu-item.opacity{
+    -webkit-animation-name: fadeOut;
+            animation-name: fadeOut;
+    -webkit-animation-duration: 5s;
+            animation-duration: 5s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-transition: all 5s linear;
+    overflow: hidden;
+  }*/
+  </style>
+  <script>
+  (function(){
+    var app = angular.module('danMu',[]);
+
+    app.controller('OdanMu', function($scope){
+      $scope.odanmus = [{
+        avatar: 'images/demo1.jpg',
+        content: '弹幕是社会化大趋势的产物',
+        isShow: false
+      },
+      {
+        avatar: 'images/demo2.jpg',
+        content: '弹幕是社会化大趋势的产物弹幕是社会化大趋弹幕是社会化大趋势的产物弹幕是社会化大趋势的产物弹幕是社会化大趋势的产物弹幕是社会化大趋势的产物势的产物弹幕是社会化大趋势的产物',
+        isShow: false
+      },
+      {
+        avatar: 'images/demo3.jpg',
+        content: '弹幕是社会化大趋势的产物',
+        isShow: false
+      },
+      {
+        avatar: 'images/demo1.jpg',
+        content: '弹幕是社会',
+        isShow: false
+      },
+      {
+        avatar: 'images/demo2.jpg',
+        content: '弹幕是社会',
+        isShow: false
+      },
+      {
+        avatar: 'images/demo3.jpg',
+        content: '弹幕是社会',
+        isShow: false
+      },
+      {
+        avatar: 'images/demo2.jpg',
+        content: '弹幕是社会',
+        isShow: false
+      },
+      {
+        avatar: 'images/demo1.jpg',
+        content: '弹幕是社会化大趋势的产物,弹幕是社会化大趋势的产物,弹幕是社会化大趋势的产物',
+        isShow: false
+      },
+      {
+        avatar: 'images/demo3.jpg',
+        content: '弹幕是社会化大趋势的产物,弹幕是社会化大趋势的产物',
+        isShow: false
+      }];
+    });
+    app.directive('danMuBox', ['$timeout','$interval',function($timeout,$interval){
+      return{
+        restrict: 'A',
+        template:
+        '<ul class="odanmu-list text-right"> '+
+        '<li class="odanmu-item" danmu-item ng-repeat="odanmu in data" ng-class="{opacity: odanmu.isShow}"> '+
+        '<div class="odanmu-body"> '+
+        '<a href="#" class="odanmu-avatar-left round-avatar sm-avatar"> '+
+        '<img ng-src="{{odanmu.avatar}}" alt=""> '+
+        '</a> '+
+        '<p class="odanmu-content">{{odanmu.content}}</p> '+
+        '</div> '+
+        '</li> '+
+        '</ul>',
+        link: function($scope, $element){
+          $scope.data = [];
+            // var index = 0;
+            var id = $interval(function(index){
+              if(index < $scope.odanmus.length){
+                console.log(index);
+                $scope.data.push($scope.odanmus[index++]);
+                if($scope.data.length>4){
+                  console.log($element);
+                  var children = $element[0].children[0].children;
+                  var length = children.length;
+                  console.log(index);
+
+                  $timeout(function(){
+                    // $scope.data[index-5].isShow = true;
+                    $scope.data.shift();
+                  }, 600);
+                }
+              }else{
+                if($scope.data.length>0){
+
+                  $timeout(function(){
+                    // $scope.data[index-5].isShow = true;
+                    $scope.data.shift();
+                  }, 600);
+                }
+              }
+              // if ($scope.data == 0) {
+              //   $interval.cancel(id);
+              // }
+              // $scope.$apply();
+              // console.log($scope.data);
+            },1000);
+          }
+        };
+      }]);
+
+    })();
+  </script>
+</body>
+</html>
